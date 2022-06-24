@@ -1,6 +1,5 @@
-Spirit Web Twig Bundle
+TwigX Bundle
 =================
-![QA](https://jenkins-seduo-ci.prod.internal.lmc/job/Spirit-web-twig-bundle-qa/badge/icon?subject=QA&link=https://jenkins-seduo-ci.prod.internal.lmc/job/Spirit-web-twig-bundle-qa/)
 ![Version](https://img.shields.io/badge/version-1.7.0-blue.svg)
 
 This is a Symfony bundle with Twig implementation of [Spirit Design System] components, extended with HTML-like syntax.
@@ -20,32 +19,21 @@ See [CHANGELOG](./CHANGELOG.md)
 
 Download using *composer*
 
-1. Add satis repository into composer.json
-
-```json
-    ...
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://jenkins-php.prod.internal.lmc/job/satis/ws/out/"
-        }
-    ]
-```
-2. Install package
+ Install package
 
 ```bash
-composer require lmc/spirit-web-twig-bundle:~1.7.0
+composer require lmc/twigx-bundle:~1.7.0
 ```
 ### Step 2
 
-Add `SpiritWebTwigBundle` into bundles (under `all` bundles). If you use Symfony flex, it will be configured automatically.
+Add `TwigXBundle` into bundles (under `all` bundles). If you use Symfony flex, it will be configured automatically.
 
 **bundles.php**
 
 ```php
     return [
         ...,
-        Lmc\SpiritWebTwigBundle\SpiritWebTwigBundle::class => ['all' => true],
+        Lmc\TwigXBundle\TwigXBundle::class => ['all' => true],
     ];
 ```
 
@@ -53,20 +41,15 @@ Add `SpiritWebTwigBundle` into bundles (under `all` bundles). If you use Symfony
 
 If you want to change the default settings, create a config
 
-**config/packages/spirit_web_twig.yml**
+**config/packages/twigx.yml**
 ```yaml
     # all parameters are optional
-    spirit_web_twig:
+    twigx:
         # define one or more paths to expand or overload components
         paths: 
             - "%kernel.project_dir%/templates/components"
         paths_alias: 'jobs-ui' # default is 'spirit'
-        html_syntax_lexer: false # default is true
-        spirit_css_class_prefix: 'jobs' # default is null
-        icons: # optional settings for svg assets
-          paths:
-            - "%kernel.project_dir%/assets/icons" # define paths for svg icons set
-          alias: 'jobs-icons' # default is 'icons-assets'
+        css_class_prefix: 'jobs' # default is null
 ```
 
 ## Usage
@@ -104,23 +87,6 @@ or pure original implementation
     {% endblock %}
 {% endembed %}
 ```
-
-# Spirit Components
-
-- [Alert](./docs/Alert.md)
-- [Button](./docs/Button.md)
-- [ButtonLink](./docs/ButtonLink.md)
-- [Container](./docs/Container.md)
-- [Grid](./docs/Grid.md)
-- [Header](./docs/Header.md)
-- [Heading](./docs/Heading.md)
-- [CheckboxField](./docs/CheckboxField.md)
-- [Link](./docs/Link.md)
-- [Stack](./docs/Stack.md)
-- [Tabs](./docs/Tabs.md)
-- [Tag](./docs/Tag.md)
-- [Text](./docs/Text.md)
-- [TextField](./docs/TextField.md)
 
 if you want to extend these components, an example guide is [here](./docs/extendComponents.md).
 if you want to contribute, read guide [here](./docs/contribution.md).

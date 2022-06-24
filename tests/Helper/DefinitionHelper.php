@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\SpiritWebTwigBundle\Helper;
+namespace Lmc\TwigXBundle\Helper;
 
 use Symfony\Component\DependencyInjection\Definition;
 

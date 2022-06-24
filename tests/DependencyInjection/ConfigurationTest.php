@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\SpiritWebTwigBundle\DependencyInjection;
+namespace Lmc\TwigXBundle\DependencyInjection;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Dumper\YamlReferenceDumper;
@@ -13,14 +13,11 @@ class ConfigurationTest extends TestCase
     {
         $dumper = new YamlReferenceDumper();
         $reference = <<<CONFIG
-spirit_web_twig:
+twigx:
     paths:                []
     paths_alias:          spirit
-    spirit_css_class_prefix: null
-    html_syntax_lexer:    true
-    icons:
-        paths:                []
-        alias:                icons-assets\n
+    css_class_prefix:     null
+
 CONFIG;
 
         $this->assertEquals($reference, $dumper->dump(new Configuration()));

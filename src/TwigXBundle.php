@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Lmc\SpiritWebTwigBundle;
+namespace Lmc\TwigXBundle;
 
-use Lmc\SpiritWebTwigBundle\DependencyInjection\CompilerPass\OverrideServiceCompilerPass;
+use Lmc\TwigXBundle\DependencyInjection\CompilerPass\OverrideServiceCompilerPass;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class SpiritWebTwigBundle extends Bundle
+class TwigXBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {
