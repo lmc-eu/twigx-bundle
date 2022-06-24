@@ -1,8 +1,8 @@
 {
   "name": "lmc/twigx-bundle",
   "type": "symfony-bundle",
-  "description": "This is Symfony bundle with twig implementation Spirit Design System components and extends the twig implementation with an HTML syntax-like.",
-  "license": "proprietary",
+  "description": "This is Symfony bundle which extends the twig implementation by an JSX like syntax.",
+  "license": "MIT",
   "repositories": [],
   "authors": [
     {
@@ -11,12 +11,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Lmc\\SpiritWebTwigBundle\\": "src/"
+      "Lmc\\TwigXBundle\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Lmc\\SpiritWebTwigBundle\\": "tests/"
+      "Lmc\\TwigXBundle\\": "tests/"
     }
   },
   "require": {

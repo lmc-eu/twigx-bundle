@@ -3,16 +3,16 @@ services:
     autowire: true
     autoconfigure: true
 
-  Lmc\SpiritWebTwigBundle\Compiler\ComponentLexer:
+  Lmc\TwigXBundle\Compiler\ComponentLexer:
     arguments:
       - '@twig'
       - []
-      - '%spirit_web_twig.paths_alias%'
+      - '%twigx.paths_alias%'
 
-  Lmc\SpiritWebTwigBundle\Twig\PropsExtension:
+  Lmc\TwigXBundle\Twig\PropsExtension:
     tags:
       - { name: twig.extension }
 
-  Lmc\SpiritWebTwigBundle\Twig\SvgExtension:
+  Lmc\TwigXBundle\Twig\SvgExtension:
     tags:
       - { name: twig.extension }

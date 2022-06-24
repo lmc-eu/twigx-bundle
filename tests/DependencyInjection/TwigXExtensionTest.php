@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Lmc\SpiritWebTwigBundle\DependencyInjection;
+namespace Lmc\TwigXBundle\DependencyInjection;
 
 use JetBrains\PhpStorm\ArrayShape;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class SpiritWebTwigExtensionTest extends TestCase
+class TwigXExtensionTest extends TestCase
 {
     private ContainerBuilder $containerBuilder;
 
@@ -17,7 +17,7 @@ class SpiritWebTwigExtensionTest extends TestCase
      */
     private function loadExtension(array $configs): void
     {
-        $extension = new SpiritWebTwigExtension();
+        $extension = new TwigXExtension();
         $this->containerBuilder = new ContainerBuilder();
         $this->containerBuilder->registerExtension($extension);
 
@@ -34,10 +34,10 @@ class SpiritWebTwigExtensionTest extends TestCase
 
         $this->loadExtension([$config]);
 
-        $this->assertTrue($this->containerBuilder->hasParameter('spirit_web_twig.paths'));
-        $this->assertTrue($this->containerBuilder->hasParameter('spirit_web_twig.paths_alias'));
-        $this->assertTrue($this->containerBuilder->hasParameter('spirit_web_twig.spirit_css_class_prefix'));
-        $this->assertTrue($this->containerBuilder->hasParameter('spirit_web_twig.html_syntax_lexer'));
+        $this->assertTrue($this->containerBuilder->hasParameter('twigx.paths'));
+        $this->assertTrue($this->containerBuilder->hasParameter('twigx.paths_alias'));
+        $this->assertTrue($this->containerBuilder->hasParameter('twigx.css_class_prefix'));
+        $this->assertTrue($this->containerBuilder->hasParameter('twigx.html_syntax_lexer'));
     }
 
     /**
@@ -48,7 +48,7 @@ class SpiritWebTwigExtensionTest extends TestCase
     {
         $this->loadExtension([$configuration]);
 
-        $this->assertEquals($expectedValue, $this->containerBuilder->getParameter('spirit_web_twig.spirit_css_class_prefix'));
+        $this->assertEquals($expectedValue, $this->containerBuilder->getParameter('twigx.css_class_prefix'));
     }
 
     /**
@@ -60,7 +60,7 @@ class SpiritWebTwigExtensionTest extends TestCase
             'default value' => [[], null],
             'custom value' => [
                 [
-                    'spirit_css_class_prefix' => 'jobs',
+                    'css_class_prefix' => 'jobs',
                 ], 'jobs-',
             ],
         ];

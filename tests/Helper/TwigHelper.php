@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Lmc\SpiritWebTwigBundle\Helper;
+namespace Lmc\TwigXBundle\Helper;
 
-use Lmc\SpiritWebTwigBundle\Compiler\ComponentLexer;
-use Lmc\SpiritWebTwigBundle\DependencyInjection\CompilerPass\OverrideServiceCompilerPass;
-use Lmc\SpiritWebTwigBundle\DependencyInjection\SpiritWebTwigExtension;
-use Lmc\SpiritWebTwigBundle\Twig\PropsExtension;
+use Lmc\TwigXBundle\Compiler\ComponentLexer;
+use Lmc\TwigXBundle\DependencyInjection\CompilerPass\OverrideServiceCompilerPass;
+use Lmc\TwigXBundle\DependencyInjection\TwigXExtension;
+use Lmc\TwigXBundle\Twig\PropsExtension;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -23,14 +23,14 @@ class TwigHelper
         array $extendedComponentsPath = []
     ): Environment {
         $loader = new FilesystemLoader($defaultTemplatePath);
-        $paths = array_merge($extendedComponentsPath, [SpiritWebTwigExtension::DEFAULT_COMPONENTS_PATH]);
+        $paths = array_merge($extendedComponentsPath, [TwigXExtension::DEFAULT_COMPONENTS_PATH]);
 
         foreach ($paths as $path) {
             $loader->addPath($path, $defaultAlias);
         }
 
-        $loader->addPath(SpiritWebTwigExtension::DEFAULT_PARTIALS_PATH, SpiritWebTwigExtension::DEFAULT_PARTIALS_ALIAS);
-        $loader->addPath(SpiritWebTwigExtension::DEFAULT_COMPONENTS_PATH, SpiritWebTwigExtension::DEFAULT_PATH_ALIAS);
+        $loader->addPath(TwigXExtension::DEFAULT_PARTIALS_PATH, TwigXExtension::DEFAULT_PARTIALS_ALIAS);
+        $loader->addPath(TwigXExtension::DEFAULT_COMPONENTS_PATH, TwigXExtension::DEFAULT_PATH_ALIAS);
 
         $twig = new Environment($loader, [
             'cache' => false,
