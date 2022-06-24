@@ -6,7 +6,6 @@ namespace Lmc\TwigXBundle\DependencyInjection\CompilerPass;
 
 use Lmc\TwigXBundle\Compiler\ComponentLexer;
 use Lmc\TwigXBundle\DependencyInjection\TwigXExtension;
-use Lmc\TwigXBundle\Twig\PropsExtension;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

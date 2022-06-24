@@ -7,7 +7,6 @@ namespace Lmc\TwigXBundle\Helper;
 use Lmc\TwigXBundle\Compiler\ComponentLexer;
 use Lmc\TwigXBundle\DependencyInjection\CompilerPass\OverrideServiceCompilerPass;
 use Lmc\TwigXBundle\DependencyInjection\TwigXExtension;
-use Lmc\TwigXBundle\Twig\PropsExtension;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -35,9 +34,6 @@ class TwigHelper
         $twig = new Environment($loader, [
             'cache' => false,
         ]);
-
-        $propsExtension = new PropsExtension();
-        $twig->addExtension($propsExtension);
 
         if ($prefix) {
             $twig->addGlobal(OverrideServiceCompilerPass::GLOBAL_PREFIX_TWIG_VARIABLE, $prefix);

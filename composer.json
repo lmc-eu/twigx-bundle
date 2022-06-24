@@ -52,7 +52,17 @@
       "@ecs",
       "@phpunit",
       "@phpstan"
+    ],
+    "analyze": [
+      "@ecs",
+      "@phpstan"
     ]
   },
-  "version": "1.7.0"
+  "version": "1.7.0",
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "phpstan/extension-installer": true
+    }
+  }
 }
