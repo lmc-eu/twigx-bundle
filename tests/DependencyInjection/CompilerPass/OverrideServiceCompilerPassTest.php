@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Lmc\SpiritWebTwigBundle\DependencyInjection\CompilerPass;
+namespace Lmc\TwigXBundle\DependencyInjection\CompilerPass;
 
-use Lmc\SpiritWebTwigBundle\DependencyInjection\SpiritWebTwigExtension;
-use Lmc\SpiritWebTwigBundle\Helper\DefinitionHelper;
+use Lmc\TwigXBundle\DependencyInjection\TwigXExtension;
+use Lmc\TwigXBundle\Helper\DefinitionHelper;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Dumper\YamlReferenceDumper;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -39,18 +39,15 @@ class OverrideServiceCompilerPassTest extends TestCase
      */
     public function testShouldRegisterTwigPaths(array $paths, int $expectedCalls): void
     {
-        $this->builder->setParameter('spirit_web_twig.paths', $paths);
-        $this->builder->setParameter('spirit_web_twig.paths_alias', 'test');
-        $this->builder->setParameter('spirit_web_twig.html_syntax_lexer', false);
-        $this->builder->setParameter('spirit_web_twig.spirit_css_class_prefix', null);
-        $this->builder->setParameter('spirit_web_twig.icons.paths', []);
-        $this->builder->setParameter('spirit_web_twig.icons.alias', 'test-icons');
+        $this->builder->setParameter('twigx.paths', $paths);
+        $this->builder->setParameter('twigx.paths_alias', 'test');
+        $this->builder->setParameter('twigx.css_class_prefix', null);
         $this->overrideService->process($this->builder);
 
         $filteredAddPathCalls = DefinitionHelper::getMethodCalls(
             $this->loader,
             'addPath',
-            [SpiritWebTwigExtension::DEFAULT_PARTIALS_PATH, SpiritWebTwigExtension::DEFAULT_PARTIALS_ALIAS]
+            [TwigXExtension::DEFAULT_PARTIALS_PATH, TwigXExtension::DEFAULT_PARTIALS_ALIAS]
         );
 
         $this->assertCount($expectedCalls, $filteredAddPathCalls);
@@ -71,22 +68,16 @@ class OverrideServiceCompilerPassTest extends TestCase
                 ['dir1/', 'dir2'], 2,
             ],
             'test should register paths with default' => [
-                ['dir1/', 'dir2', $defaultPath], 4,
+                ['dir1/', 'dir2', $defaultPath], 3,
             ],
         ];
     }
 
-    /**
-     * @dataProvider extendTwigServiceDataProvider
-     */
-    public function testShouldExtendTwigService(bool $isLexer, int $expectedCalls): void
+    public function testShouldExtendTwigService(): void
     {
-        $this->builder->setParameter('spirit_web_twig.paths', []);
-        $this->builder->setParameter('spirit_web_twig.paths_alias', 'test');
-        $this->builder->setParameter('spirit_web_twig.html_syntax_lexer', $isLexer);
-        $this->builder->setParameter('spirit_web_twig.spirit_css_class_prefix', null);
-        $this->builder->setParameter('spirit_web_twig.icons.paths', []);
-        $this->builder->setParameter('spirit_web_twig.icons.alias', 'test-icons');
+        $this->builder->setParameter('twigx.paths', []);
+        $this->builder->setParameter('twigx.paths_alias', 'test');
+        $this->builder->setParameter('twigx.css_class_prefix', null);
         $this->overrideService->process($this->builder);
 
         $filteredAddGlobal = DefinitionHelper::getMethodCalls(
@@ -99,17 +90,6 @@ class OverrideServiceCompilerPassTest extends TestCase
             'setLexer',
         );
 
-        $this->assertSame($expectedCalls, count($filteredAddGlobal) + count($filteredAddLexer));
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function extendTwigServiceDataProvider(): array
-    {
-        return [
-            'test should register global' => [false, 1],
-            'test should register lexer' => [true, 2],
-        ];
+        $this->assertSame(2, count($filteredAddGlobal) + count($filteredAddLexer));
     }
 }

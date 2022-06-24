@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\SpiritWebTwigBundle\Compiler;
+namespace Lmc\TwigXBundle\Compiler;
 
 /**
  * Transforms <Tags /> to twig embed tags
