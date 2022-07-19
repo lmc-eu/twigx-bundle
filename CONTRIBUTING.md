@@ -3,4 +3,4 @@
 > Guide for contributors.
 
 ## Release new version
-* run script `. ./newVersion.sh <version>`
+* run script `make version v=<version>`

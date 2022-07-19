@@ -2,10 +2,14 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
-- Update `Tag` - add sizes, split theme and color classes, allow elementType change
-- Bugfix `isRequired` functionality in `TextField` component
-- Introduce `Pill` component
-- Introduce `Tabs` component
+- Chore: Introduce self-documented makefile to maintain this project
+- Chore: Introduce docker support for better development experience
+- Chore: Remove unused command for updating snapshots
+- Chore: Remove unused configuration file for coding standard
+- Setup CI pipeline using GitHub Actions
+- Move components into separate package in Spirit Design System repository
+    and make JSX like syntax compiler in Twig as public Symfony bundle
+- Rename bundle to lmc/twigx-bundle
 - Refactor components and update their readme
 
 
