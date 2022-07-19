@@ -46,7 +46,6 @@
     "ecs:fix": "vendor/bin/ecs check --no-progress-bar --ansi --fix  src/ tests/",
     "phpunit": "vendor/bin/phpunit",
     "phpunit:coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit",
-    "phpunit:update": "vendor/bin/phpunit -d --update-snapshots",
     "phpstan": "vendor/bin/phpstan analyze",
     "tests": [
       "@ecs",
