@@ -18,7 +18,7 @@ then
 fi
 
 git reset --hard
-git checkout master
+git checkout main
 git pull
 
 export VERSION=$1
@@ -36,5 +36,5 @@ replace_in_file "s/composer require lmc\/spirit-web-twig-bundle:~.*/composer req
 git add .
 git commit -m "Release $VERSION"
 git tag "$VERSION" # or any other text
-git push origin master # push the commit
+git push origin main # push the commit
 git push --tags origin # push the tags
