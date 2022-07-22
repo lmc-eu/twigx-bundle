@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+
+## 2.0.0 - 2022-07-22
 - Chore: Introduce self-documented makefile to maintain this project
 - Chore: Introduce docker support for better development experience
 - Chore: Remove unused command for updating snapshots
