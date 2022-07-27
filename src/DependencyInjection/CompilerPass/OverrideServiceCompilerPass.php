@@ -8,6 +8,7 @@ use Lmc\TwigXBundle\Compiler\ComponentLexer;
 use Lmc\TwigXBundle\DependencyInjection\TwigXExtension;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 class OverrideServiceCompilerPass implements CompilerPassInterface
@@ -25,18 +26,27 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
         $pathAlias = $container->getParameter(TwigXExtension::PARAMETER_PATH_ALIAS);
         $classPrefix = $container->getParameter(TwigXExtension::PARAMETER_CSS_CLASS_PREFIX);
 
-        $twigLoaderDefinition->addMethodCall('addPath', [TwigXExtension::DEFAULT_PARTIALS_PATH, TwigXExtension::DEFAULT_PARTIALS_ALIAS]);
+        $this->addGlobPath($twigLoaderDefinition, TwigXExtension::DEFAULT_PARTIALS_PATH, TwigXExtension::DEFAULT_PARTIALS_ALIAS);
 
         foreach ($paths as $path) {
             $twigLoaderDefinition->addMethodCall('addPath', [$path, $pathAlias]);
 
             if ($path === TwigXExtension::DEFAULT_COMPONENTS_PATH) {
-                $twigLoaderDefinition->addMethodCall('addPath', [$path, TwigXExtension::DEFAULT_PATH_ALIAS]);
+                $this->addGlobPath($twigLoaderDefinition, $path, TwigXExtension::DEFAULT_PATH_ALIAS);
             }
         }
 
         $twigDefinition->addMethodCall('addGlobal', [self::GLOBAL_PREFIX_TWIG_VARIABLE, $classPrefix]);
 
         $twigDefinition->addMethodCall('setLexer', [new Reference(ComponentLexer::class)]);
+    }
+
+    private function addGlobPath(Definition $twigLoaderDefinition, string $path, string $alias): void
+    {
+        if ($paths = glob($path, GLOB_ONLYDIR)) {
+            foreach ($paths as $path) {
+                $twigLoaderDefinition->addMethodCall('addPath', [$path, $alias]);
+            }
+        }
     }
 }
