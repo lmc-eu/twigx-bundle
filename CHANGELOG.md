@@ -13,6 +13,7 @@
     and make JSX like syntax compiler in Twig as public Symfony bundle
 - Rename bundle to lmc/twigx-bundle
 - Refactor components and update their readme
+- Feat: Enable glob function patterns in a paths (refs #4)
 
 
 ## 1.7.0 - 2022-05-09
