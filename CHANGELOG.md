@@ -3,6 +3,9 @@
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
 
+## 2.1.0 - 2022-07-28
+- Feat: Enable glob function patterns in a paths (refs #4)
+
 ## 2.0.0 - 2022-07-22
 - Chore: Introduce self-documented makefile to maintain this project
 - Chore: Introduce docker support for better development experience
@@ -13,7 +16,6 @@
     and make JSX like syntax compiler in Twig as public Symfony bundle
 - Rename bundle to lmc/twigx-bundle
 - Refactor components and update their readme
-- Feat: Enable glob function patterns in a paths (refs #4)
 
 
 ## 1.7.0 - 2022-05-09
