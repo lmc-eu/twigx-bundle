@@ -2,6 +2,7 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- Chore: Fix typo in Makefile command
 
 ## 2.1.0 - 2022-07-28
 - Feat: Enable glob function patterns in a paths (refs #4)
