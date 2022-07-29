@@ -58,7 +58,7 @@ phpunit: ## Run composer phpunit
 	@$(COMPOSER) phpunit
 
 phpunit-coverage: ## Run composer phpunit:coverage
-	@$(COMPOSER) phpunit:coverge
+	@$(COMPOSER) phpunit:coverage
 
 ecs: ## Run composer ecs
 	@$(COMPOSER) ecs
