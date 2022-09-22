@@ -2,7 +2,11 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- Feat: Introduce more similar JSX variables syntax
 - Chore: Fix typo in Makefile command
+- Chore: Fix ecs-fix command in Makefile
+- Update `lmc/coding-standard` package to version `3.3`
+
 
 ## 2.1.0 - 2022-07-28
 - Feat: Enable glob function patterns in a paths (refs #4)

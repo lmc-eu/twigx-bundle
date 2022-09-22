@@ -141,6 +141,30 @@ class ComponentTagCompiler
         );
     }
 
+    private function valueParser(?string $value, string $attribute): string
+    {
+        if ($value === null) {
+            return 'true';
+        }
+
+        // enable an argument that begins with a colon
+        if (\str_starts_with($attribute, ':')) {
+            return $this->stripQuotes($value);
+        }
+
+        $valueWithoutQuotes = $this->stripQuotes($value);
+
+        if (\str_starts_with($valueWithoutQuotes, '{{') && (mb_strpos($valueWithoutQuotes, '}}') === mb_strlen($valueWithoutQuotes) - 2)) {
+            return mb_substr($valueWithoutQuotes, 2, -2);
+        }
+
+        if (\str_starts_with($valueWithoutQuotes, '{') && (mb_strpos($valueWithoutQuotes, '}') === mb_strlen($valueWithoutQuotes) - 1)) {
+            return trim(mb_substr($valueWithoutQuotes, 1, -1));
+        }
+
+        return $value;
+    }
+
     protected function getAttributesFromAttributeString(string $attributeString): string
     {
         $attributeString = $this->parseAttributeBag($attributeString);
@@ -154,6 +178,8 @@ class ComponentTagCompiler
                         \"[^\"]+\"
                         |
                         \\\'[^\\\']+\\\'
+                        |
+                        \{[^\{]+\}
                         |
                         [^\s>]+
                     )
@@ -169,22 +195,11 @@ class ComponentTagCompiler
 
         foreach ($matches as $match) {
             $attribute = $match['attribute'];
-            $value = $match['value'] ?? null;
-
-            if ($value === null) {
-                $value = 'true';
-            }
+            $value = $this->valueParser($match['value'] ?? null, $attribute);
 
             // enable an argument that begins with a colon
             if (\str_starts_with($attribute, ':')) {
                 $attribute = str_replace(':', '', $attribute);
-                $value = $this->stripQuotes($value);
-            }
-
-            $valueWithoutQuotes = $this->stripQuotes($value);
-
-            if (\str_starts_with($valueWithoutQuotes, '{{') && (mb_strpos($valueWithoutQuotes, '}}') === mb_strlen($valueWithoutQuotes) - 2)) {
-                $value = mb_substr($valueWithoutQuotes, 2, -2);
             }
 
             $attributes[$attribute] = $value;

@@ -64,7 +64,7 @@ ecs: ## Run composer ecs
 	@$(COMPOSER) ecs
 
 ecs-fix: ## Run composer ecs-fix
-	@$(COMPOSER) ecs-fix
+	@$(COMPOSER) ecs:fix
 
 test: ## Run composer tests
 	@$(COMPOSER) tests
