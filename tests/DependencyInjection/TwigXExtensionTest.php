@@ -35,32 +35,5 @@ class TwigXExtensionTest extends TestCase
 
         $this->assertTrue($this->containerBuilder->hasParameter('twigx.paths'));
         $this->assertTrue($this->containerBuilder->hasParameter('twigx.paths_alias'));
-        $this->assertTrue($this->containerBuilder->hasParameter('twigx.css_class_prefix'));
-    }
-
-    /**
-     * @param array<string, string> $configuration
-     * @dataProvider spiritClassPrefixParameterDataProvider
-     */
-    public function testShouldGetSpiritClassPrefixParameter(array $configuration, ?string $expectedValue): void
-    {
-        $this->loadExtension([$configuration]);
-
-        $this->assertEquals($expectedValue, $this->containerBuilder->getParameter('twigx.css_class_prefix'));
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function spiritClassPrefixParameterDataProvider(): array
-    {
-        return [
-            'default value' => [[], null],
-            'custom value' => [
-                [
-                    'css_class_prefix' => 'jobs',
-                ], 'jobs-',
-            ],
-        ];
     }
 }

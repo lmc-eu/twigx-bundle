@@ -28,9 +28,6 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('paths_alias')
             ->defaultValue(TwigXExtension::DEFAULT_PATH_ALIAS)
             ->end()
-            ->scalarNode('css_class_prefix')
-            ->defaultNull()
-            ->end()
             ->end()
             ->end();
 
