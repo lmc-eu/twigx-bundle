@@ -70,6 +70,9 @@ other="{{'this' ~ 'works' ~ 'too'}}"
 anotherProp="or this still work"
 not-this="{{'this' ~ 'does'}}{{ 'not work' }}" // this returns syntax as plain text but prop with dash work
 ifCondition="{{ variable == 'success' ? 'true' : 'false' }}"  // condition can only be written via the ternary operator
+jsXCondition={ variable == 'success' ? 'true' : 'false' }  // condition can only be written via the ternary operator
+isBoolean={false}  // if value is false
+numberValue={11}  // if value is number 11
 isOpen  // if no value is defined, it is set to true
 >
     Submit
