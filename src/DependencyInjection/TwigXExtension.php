@@ -18,8 +18,6 @@ class TwigXExtension extends Extension
 {
     public const PARAMETER_PATHS = 'twigx.paths';
 
-    public const PARAMETER_CSS_CLASS_PREFIX = 'twigx.css_class_prefix';
-
     public const PARAMETER_PATH_ALIAS = 'twigx.paths_alias';
 
     public const DEFAULT_COMPONENTS_PATH = __DIR__ . '';
@@ -39,7 +37,6 @@ class TwigXExtension extends Extension
         $loader->load('services.yml');
 
         $container->setParameter(self::PARAMETER_PATHS, array_merge($config['paths'], [self::DEFAULT_COMPONENTS_PATH]));
-        $container->setParameter(self::PARAMETER_CSS_CLASS_PREFIX, isset($config['css_class_prefix']) ? $config['css_class_prefix'] . '-' : null);
         $container->setParameter(self::PARAMETER_PATH_ALIAS, $config['paths_alias']);
     }
 }

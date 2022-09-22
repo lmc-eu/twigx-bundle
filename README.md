@@ -48,8 +48,7 @@ If you want to change the default settings, create a config
         # define one or more paths to expand or overload components (uses glob patterns)
         paths: 
             - "%kernel.project_dir%/templates/components"
-        paths_alias: 'jobs-ui' # default is 'spirit'
-        css_class_prefix: 'jobs' # default is null
+        paths_alias: 'jobs-ui' # alias for twig paths above (default is 'spirit')
 ```
 
 ## Usage
