@@ -41,7 +41,6 @@ class OverrideServiceCompilerPassTest extends TestCase
     {
         $this->builder->setParameter('twigx.paths', $paths);
         $this->builder->setParameter('twigx.paths_alias', 'test');
-        $this->builder->setParameter('twigx.css_class_prefix', null);
         $this->overrideService->process($this->builder);
 
         $filteredAddPathCalls = DefinitionHelper::getMethodCalls(
@@ -77,7 +76,6 @@ class OverrideServiceCompilerPassTest extends TestCase
     {
         $this->builder->setParameter('twigx.paths', []);
         $this->builder->setParameter('twigx.paths_alias', 'test');
-        $this->builder->setParameter('twigx.css_class_prefix', null);
         $this->overrideService->process($this->builder);
 
         $filteredAddGlobal = DefinitionHelper::getMethodCalls(
@@ -90,6 +88,6 @@ class OverrideServiceCompilerPassTest extends TestCase
             'setLexer',
         );
 
-        $this->assertSame(2, count($filteredAddGlobal) + count($filteredAddLexer));
+        $this->assertSame(1, count($filteredAddGlobal) + count($filteredAddLexer));
     }
 }

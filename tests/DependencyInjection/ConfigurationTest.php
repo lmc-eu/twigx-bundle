@@ -16,7 +16,6 @@ class ConfigurationTest extends TestCase
 twigx:
     paths:                []
     paths_alias:          spirit
-    css_class_prefix:     null
 
 CONFIG;
 
