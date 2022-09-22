@@ -5,8 +5,8 @@ TwigX Bundle
 This is a Symfony bundle with Twig implementation of [Spirit Design System] components, extended with HTML-like syntax.
 
 ## Requirements
-- PHP 7.4
-- Symfony 3.4+ || 4.2+ || 5.0+
+- PHP 7.4 || 8.1
+- Symfony 3.4+ || 4.4+ || 5.4+ || ^6.1
 - Twig >=1.44.6 || >=2.12.5 || 3+
 
 ## Changelog
