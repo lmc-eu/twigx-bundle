@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- [BC]: Drop support Symfony `3.4` and not LTS versions `4.x` and `5.x`
+- Feat: Introduce support PHP `^8.1` and `^6.1`
 - Feat: Introduce more similar JSX variables syntax
 - Chore: Fix remove unnecessary configuration parameter `css_class_prefix`
 - Chore: Fix typo in Makefile command
