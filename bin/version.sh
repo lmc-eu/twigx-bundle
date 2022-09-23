@@ -24,14 +24,15 @@ git pull
 export VERSION=$1
 DIR=$PWD
 DATE=$(date '+%Y-%m-%d');
+VERSION_ICON="${VERSION//-/--}"
 
 jq --arg VERSION $VERSION ".version=\"$VERSION\"" $DIR/composer.json > $DIR/composer.json.new
 mv $DIR/composer.json.new $DIR/composer.json
 
 
 replace_in_file "s/## Unreleased/## Unreleased\n\n## $VERSION - $DATE/g" $DIR/CHANGELOG.md
-replace_in_file "s/version-.*-blue/version-$VERSION-blue/g" $DIR/README.md
-replace_in_file "s/composer require lmc\/spirit-web-twig-bundle:~.*/composer require lmc\/spirit-web-twig-bundle:~$VERSION/g" $DIR/README.md
+replace_in_file "s/version-.*-blue/version-$VERSION_ICON-blue/g" $DIR/README.md
+replace_in_file "s/composer require lmc\/twigx-bundle:~.*/composer require lmc\/twigx-bundle:~$VERSION/g" $DIR/README.md
 
 git add .
 git commit -m "Release $VERSION"
