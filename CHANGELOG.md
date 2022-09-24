@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+
+## 3.0.0 - 2022-09-24
 - [BC]: Drop support Symfony `3.4` and not LTS versions `4.x` and `5.x`
 - Feat: Introduce support PHP `^8.1` and `^6.1`
 - Feat: Introduce more similar JSX variables syntax
@@ -9,7 +11,6 @@
 - Chore: Fix typo in Makefile command
 - Chore: Fix ecs-fix command in Makefile
 - Update `lmc/coding-standard` package to version `3.3`
-
 
 ## 2.1.0 - 2022-07-28
 - Feat: Enable glob function patterns in a paths (refs #4)
