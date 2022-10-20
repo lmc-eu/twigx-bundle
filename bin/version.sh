@@ -32,7 +32,6 @@ mv $DIR/composer.json.new $DIR/composer.json
 
 replace_in_file "s/## Unreleased/## Unreleased\n\n## $VERSION - $DATE/g" $DIR/CHANGELOG.md
 replace_in_file "s/version-.*-blue/version-$VERSION_ICON-blue/g" $DIR/README.md
-replace_in_file "s/composer require lmc\/twigx-bundle:~.*/composer require lmc\/twigx-bundle:~$VERSION/g" $DIR/README.md
 
 git add .
 git commit -m "Release $VERSION"

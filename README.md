@@ -1,8 +1,8 @@
 TwigX Bundle
 =================
-![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)
+[![Latest Stable Version](https://img.shields.io/packagist/v/lmc/twigx-bundle.svg)](https://packagist.org/packages/lmc/twigx-bundle)
 
-This is a Symfony bundle with Twig implementation of [Spirit Design System] components, extended with HTML-like syntax.
+Symfony bundle extending Twig template engine with [JSX]-like markup.
 
 ## Requirements
 - PHP 7.4 || 8.1
@@ -24,6 +24,7 @@ Download using *composer*
 ```bash
 composer require lmc/twigx-bundle
 ```
+
 ### Step 2
 
 Add `TwigXBundle` into bundles (under `all` bundles). If you use Symfony flex, it will be configured automatically.
@@ -94,3 +95,4 @@ if you want to extend these components, an example guide is [here](./docs/extend
 if you want to contribute, read guide [here](./docs/contribution.md).
 
 [Spirit Design System]: https://github.com/lmc-eu/spirit-design-system
+[JSX]: https://reactjs.org/docs/introducing-jsx.html
