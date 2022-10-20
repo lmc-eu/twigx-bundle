@@ -17,10 +17,10 @@ jobs:
                 include:
                     - { php-version: '7.4', dependencies: '--prefer-lowest --prefer-stable' }
 
-        name: Unit tests - PHP ${{ matrix.dependencies }}
+        name: Unit tests - PHP ${{ matrix.php-version }} ${{ matrix.dependencies }}
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
@@ -59,7 +59,7 @@ jobs:
         name: "Code style and static analysis"
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
