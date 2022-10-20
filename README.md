@@ -22,7 +22,7 @@ Download using *composer*
  Install package
 
 ```bash
-composer require lmc/twigx-bundle:~3.0.0
+composer require lmc/twigx-bundle
 ```
 ### Step 2
 
