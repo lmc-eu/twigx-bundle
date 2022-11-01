@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+
+## 3.1.0 - 2022-11-01
 - Docs: Add missing changelog messages
 - Chore: Introduce `.editorconfig` configuration file
 - Chore: Introduce `.gitattributes` file to lower download size
