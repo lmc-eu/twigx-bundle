@@ -2,6 +2,12 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- Docs: Add missing changelog messages
+- Chore: Introduce `.editorconfig` configuration file
+- Chore: Introduce `.gitattributes` file to lower download size
+- Docs: Add version badge with link to Packagist
+- Chore: Run tests on newer PHP versions
+- Chore: Update deprecated github actions
 
 ## 3.0.0 - 2022-09-24
 - [BC]: Drop support Symfony `3.4` and not LTS versions `4.x` and `5.x`
@@ -60,7 +66,7 @@
 
 ## 1.2.0 - 2021-12-15
 - Add prop `class` into components for customization
-- Add base spirit component alias `spirit` 
+- Add base spirit component alias `spirit`
 - Add tests extendable components cases
 - Bugfix load bundle in project with multiple twig extension
 
