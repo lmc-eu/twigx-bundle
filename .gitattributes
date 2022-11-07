@@ -13,5 +13,5 @@
 /phpstan.neon.dist  export-ignore
 /phpunit.xml.dist   export-ignore
 
-# Configure diff output for .php and .phar files.
+# Configure diff output for .php files.
 *.php diff=php
