@@ -102,35 +102,35 @@ class ComponentTagCompiler
         $pattern = "/
             <
                 \s*
-                ([[A-Z]\w+]*)
-                (?<attributes>
-                    (?:
-                        \s+
-                        (?:
-                            (?:
-                                \{\{\s*\\\$attributes(?:[^}]+?)?\s*\}\}
-                            )
+                ([[A-Z]\w+]*)                                            # First capturing group - component name
+                (?<attributes>                                           # Named capturing group - attributes
+                    (?:                                                  # Non-capturing group
+                        \s+                                              # Matches zero or more whitespace character
+                        (?:                                              # Non-capturing group
+                            (?:                                          # Non-capturing group
+                                \{\{\s*\\\$attributes(?:[^}]+?)?\s*\}\}  # Matches attributes between {{ and }}
+                            )                                            # End of non-capturing group
                             |                                            # or
                             (?:\{\#.*\#\})                               # Matches Twig comments, non-capturing
                             |                                            # or
-                            (?:
-                                [\w\-:.@]+
-                                (
-                                    =
-                                    (?:
-                                        \\\"[^\\\"]*\\\"
-                                        |
-                                        \'[^\']*\'
-                                        |
-                                        [^\'\\\"=<>]+
-                                    )
-                                )?
-                            )
-                        )
-                    )*
-                    \s*
-                )
-            \/>
+                            (?:                                          # Non-capturing group
+                                [\w\-:.@]+                               # Matches list of one or more words and characters -:.@ literally
+                                (                                        # Third capturing group
+                                    =                                    # Matches the character =
+                                    (?:                                  # Non-capturing group
+                                        \\\"[^\\\"]*\\\"                 # Matches list of characters
+                                        |                                # or
+                                        \'[^\']*\'                       # Matches list of characters
+                                        |                                # or
+                                        [^\'\\\"=<>]+                    # Matches list of characters
+                                    )                                    # End of non-capturing group
+                                )?                                       # Matches group zero or one time
+                            )                                            # End of non-capturing group
+                        )                                                # End of non-capturing group
+                    )*                                                   # End of non-capturing group
+                    \s*                                                  # Matches whitespace character zero or more
+                )                                                        # End of non-capturing group
+            \/>                                                          # Matches string literally
         /x";
 
         return (string) preg_replace_callback(
