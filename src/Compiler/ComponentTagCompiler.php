@@ -172,6 +172,7 @@ class ComponentTagCompiler
     protected function getAttributesFromAttributeString(string $attributeString): string
     {
         $attributeString = $this->parseAttributeBag($attributeString);
+        $attributeString = $this->pourOutCommentsFromAttributeBag($attributeString);
 
         $pattern = '/
             (?<attribute>[\w\-:.@]+)
@@ -239,5 +240,23 @@ class ComponentTagCompiler
         /x";
 
         return (string) preg_replace($pattern, ' :attributes="$1"', $attributeString);
+    }
+
+    /**
+     * Remove Twig comments from given attribute string
+     */
+    protected function pourOutCommentsFromAttributeBag(string $attributeString): string
+    {
+        $pattern = "/
+            (                                               # First capturing group
+                \{\#                                        # Match {# literally
+                    (                                       # Second capturing group
+                        (?!\#\}).+?                         # Use negative lookahead to match until the first occurrence of #}
+                    )                                       # End of second capturing group
+                \#\}                                        # Match #} literally
+            )                                               # End of first capturing group
+        /x";
+
+        return (string) preg_replace($pattern, '', $attributeString);
     }
 }
