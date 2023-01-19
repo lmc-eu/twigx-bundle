@@ -22,6 +22,20 @@ class ComponentTagCompilerTest extends TestCase
         $this->assertSame('{% embed "@alias/alert.twig" with { props: {\'variable\': value,\'variableWithoutQuotes\': value} } %}{% endembed %}', $compiler->compile());
     }
 
+    public function testShouldCompileTwigVariablesWithTwigCommentSelfClosingTag(): void
+    {
+        $compiler = new ComponentTagCompiler('<Alert variable="{{value}}" {# This is comment #} variableWithoutQuotes={{value}} />', 'alias');
+
+        $this->assertSame('{% embed "@alias/alert.twig" with { props: {\'variable\': value,\'variableWithoutQuotes\': value} } %}{% endembed %}', $compiler->compile());
+    }
+
+    public function testShouldCompileTwigVariablesWithTwigComment(): void
+    {
+        $compiler = new ComponentTagCompiler('<Alert variable="{{value}}" {# This is comment #} variableWithoutQuotes={{value}}>Test</Alert>', 'alias');
+
+        $this->assertSame('{% embed "@alias/alert.twig" with { props: {\'variable\': value,\'variableWithoutQuotes\': value} } %}{% block content %}Test{% endblock %}{% endembed %}', $compiler->compile());
+    }
+
     public function testShouldCompileTwigAttributeJSXSyntax(): void
     {
         $compiler = new ComponentTagCompiler('<Alert number={12} value={ aaa } isBool={false} />', 'alias');

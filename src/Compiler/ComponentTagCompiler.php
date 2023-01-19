@@ -46,6 +46,8 @@ class ComponentTagCompiler
                                 \{\{\s*\\\$attributes(?:[^}]+?)?\s*\}\}
                             )
                             |
+                            (?!\#\}).+?                                 # Use negative lookahead to match until the first occurrence of #}
+                            |
                             (?:
                                 [\w\-:.@]+
                                 (
@@ -108,7 +110,9 @@ class ComponentTagCompiler
                             (?:
                                 \{\{\s*\\\$attributes(?:[^}]+?)?\s*\}\}
                             )
-                            |
+                            |                                            # or
+                            (?:\{\#.*\#\})                               # Matches Twig comments, non-capturing
+                            |                                            # or
                             (?:
                                 [\w\-:.@]+
                                 (
