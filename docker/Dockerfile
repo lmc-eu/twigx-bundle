@@ -5,7 +5,10 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     libzip-dev \
     unzip
-RUN docker-php-ext-install zip
+# Install and enable extensions
+RUN docker-php-ext-install zip \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug
 
 # copy files
 COPY ./install-composer.sh /tmp
@@ -13,5 +16,3 @@ COPY ./install-composer.sh /tmp
 WORKDIR /srv/www/twigx-bundle
 
 RUN bash /tmp/install-composer.sh
-
-
