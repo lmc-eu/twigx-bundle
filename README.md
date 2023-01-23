@@ -1,6 +1,7 @@
 TwigX Bundle
 =================
 [![Latest Stable Version](https://img.shields.io/packagist/v/lmc/twigx-bundle.svg)](https://packagist.org/packages/lmc/twigx-bundle)
+[![Coverage Status](https://coveralls.io/repos/github/lmc-eu/twigx-bundle/badge.svg?branch=main)](https://coveralls.io/github/lmc-eu/twigx-bundle?branch=main)
 
 Symfony bundle extending Twig template engine with [JSX]-like markup.
 
@@ -47,7 +48,7 @@ If you want to change the default settings, create a config
     # all parameters are optional
     twigx:
         # define one or more paths to expand or overload components (uses glob patterns)
-        paths: 
+        paths:
             - "%kernel.project_dir%/templates/components"
         paths_alias: 'jobs-ui' # alias for twig paths above (default is 'spirit')
 ```
