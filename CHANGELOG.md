@@ -2,6 +2,15 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- Docs: Add badge with code coverage status
+- Deps: Set phpunit version to at least 9.5.20
+- Chore: Publish code coverage report from pipeline to Coveralls
+- Chore: Install Xdebug as code coverage driver
+- Docs: Add comments to tag compiler regex (refs #DS-537)
+- Fix: Remove Twig comments from parsed attributes/props (refs #DS-537)
+- Feat: Allow Twig comments be placed between props (refs #DS-537)
+- Docs: Remove phar files from comment
+
 
 ## 3.1.0 - 2022-11-01
 - Docs: Add missing changelog messages
