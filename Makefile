@@ -1,6 +1,6 @@
 # Executables (local)
 DOCKER_COMP						= docker-compose
-DOCKER_PART_PHP_NAME	= php
+DOCKER_PART_PHP_NAME	= php-twigx-bundle
 SHELL									= bash
 
 # Docker containers
