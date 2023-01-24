@@ -1,19 +1,19 @@
 # Executables (local)
-DOCKER_COMP						= docker-compose
+DOCKER_COMP				= docker-compose
 DOCKER_PART_PHP_NAME	= php-twigx-bundle
-SHELL									= bash
+SHELL					= bash
 
 # Docker containers
 PHP_CONT_PHP = cd ./docker/ && $(DOCKER_COMP) exec $(DOCKER_PART_PHP_NAME)
 
 # Executables
-PHP      = $(PHP_CONT_PHP) php
-COMPOSER = $(PHP_CONT_PHP) composer
-MAKE  	 = $(PHP_CONT_PHP) make
+PHP			= $(PHP_CONT_PHP) php
+COMPOSER	= $(PHP_CONT_PHP) composer
+MAKE		= $(PHP_CONT_PHP) make
 
 # Misc
-.DEFAULT_GOAL = help
-.PHONY        = help build up start down logs sh bash composer vendor make phpunit test analyze
+.DEFAULT_GOAL	= help
+.PHONY			= help build up start down logs sh bash composer vendor make phpunit test analyze
 
 ## —— 🐳 The TwigX Bundle Makefile 🐳  —————————————————————————————————
 help: ## Outputs this help screen
