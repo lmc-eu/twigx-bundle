@@ -1,5 +1,5 @@
 services:
-    php:
+    php-twigx-bundle:
         build:
             context: .
             dockerfile: 'Dockerfile'
