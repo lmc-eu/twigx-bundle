@@ -10,6 +10,7 @@
 - Fix: Remove Twig comments from parsed attributes/props (refs #DS-537)
 - Feat: Allow Twig comments be placed between props (refs #DS-537)
 - Docs: Remove phar files from comment
+- Style: Fix indentation of tabs in Makefile
 - Chore: Rename docker container to more specific name
 
 ## 3.1.0 - 2022-11-01
