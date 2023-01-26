@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+
+## 3.2.0 - 2023-01-26
 - Docs: Add badge with code coverage status
 - Deps: Set phpunit version to at least 9.5.20
 - Chore: Publish code coverage report from pipeline to Coveralls
