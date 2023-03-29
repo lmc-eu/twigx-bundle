@@ -46,7 +46,7 @@ class ComponentTagCompiler
                                 \{\{\s*\\\$attributes(?:[^}]+?)?\s*\}\}
                             )
                             |
-                            (?!\#\}).+?                                 # Use negative lookahead to match until the first occurrence of #}
+                            (\{\#\s*(.*?)\s*\#\})                        # Capture any sequence between {# and #}
                             |
                             (?:
                                 [\w\-:.@]+
@@ -91,6 +91,7 @@ class ComponentTagCompiler
      */
     protected function compileClosingTags(string $value): string
     {
+        // replace </Alert> with {% endblock %}{% endembed %}
         return (string) preg_replace("/<\/\s*([[A-Z]\w+]*)\s*>/", '{% endblock %}{% endembed %}', $value);
     }
 
