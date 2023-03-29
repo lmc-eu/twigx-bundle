@@ -92,6 +92,25 @@ or pure original implementation
 {% endembed %}
 ```
 
+### Allowed parenthesis
+
+You can pass variables to props using two syntaxes.
+JSX-like syntax uses single `{...}` parentheses or Twig-like syntax that uses `{{...}}` parentheses.
+In both cases, there can be a whitespace around the value that is used.
+See the examples below.
+
+JSX-like syntax example:
+
+```html
+<ComponentName variable={value} anotherVariable={ value } />
+```
+
+Twig like syntax example:
+
+```html
+<ComponentName variable={{value}} anotherVariable={{ value }} />
+```
+
 if you want to extend these components, an example guide is [here](./docs/extendComponents.md).
 if you want to contribute, read guide [here](./docs/contribution.md).
 

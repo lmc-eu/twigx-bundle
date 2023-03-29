@@ -37,6 +37,42 @@ class ComponentTagCompilerTest extends TestCase
     }
 
     /**
+     * @dataProvider twigParenthesesDataProvider
+     */
+    public function testShouldCompileTwigVariablesParentheses(string $component, string $expected): void
+    {
+        $compiler = new ComponentTagCompiler($component, 'alias');
+
+        $this->assertSame($expected, $compiler->compile());
+    }
+
+    /**
+     * @return array<string, string[]>
+     */
+    public function twigParenthesesDataProvider(): array
+    {
+        return [
+            // component, expected
+            'jsx syntax parentheses' => [
+                '<Alert variable="{value}" variableWithoutQuotes={value} />',
+                '{% embed "@alias/alert.twig" with { props: {\'variable\': value,\'variableWithoutQuotes\': value} } %}{% endembed %}',
+            ],
+            'jsx syntax parentheses with spaces' => [
+                '<Alert variable="{ value }" variableWithoutQuotes={ value } />',
+                '{% embed "@alias/alert.twig" with { props: {\'variable\': value,\'variableWithoutQuotes\': value} } %}{% endembed %}',
+            ],
+            'twig syntax parentheses' => [
+                '<Alert variable="{{value}}" variableWithoutQuotes={{value}}>Test</Alert>',
+                '{% embed "@alias/alert.twig" with { props: {\'variable\': value,\'variableWithoutQuotes\': value} } %}{% block content %}Test{% endblock %}{% endembed %}',
+            ],
+            'twig syntax parentheses with spaces' => [
+                '<Alert variable="{{ value }}" variableWithoutQuotes={{ value }}>Test</Alert>',
+                '{% embed "@alias/alert.twig" with { props: {\'variable\': value,\'variableWithoutQuotes\': value} } %}{% block content %}Test{% endblock %}{% endembed %}',
+            ],
+        ];
+    }
+
+    /**
      * @dataProvider twigCommentsDataProvider
      */
     public function testShouldCompileTwigVariablesWithTwigComment(string $component, string $expected): void
