@@ -156,12 +156,18 @@ class ComponentTagCompiler
             return $this->stripQuotes($value);
         }
 
-        $valueWithoutQuotes = $this->stripQuotes($value);
+        // `"{{ value }} "` -> `{{ value }}`
+        // `"{ value } "` -> `{ value }`
+        // `"{{value}} "` -> `{{value}}`
+        // `"{value} "` -> `{value}`
+        $valueWithoutQuotes = trim($this->stripQuotes($value));
 
+        // `{{ value }}` or `{{value}}`
         if (\str_starts_with($valueWithoutQuotes, '{{') && (mb_strpos($valueWithoutQuotes, '}}') === mb_strlen($valueWithoutQuotes) - 2)) {
-            return mb_substr($valueWithoutQuotes, 2, -2);
+            return trim(mb_substr($valueWithoutQuotes, 2, -2));
         }
 
+        // `{ value }` or `{value}`
         if (\str_starts_with($valueWithoutQuotes, '{') && (mb_strpos($valueWithoutQuotes, '}') === mb_strlen($valueWithoutQuotes) - 1)) {
             return trim(mb_substr($valueWithoutQuotes, 1, -1));
         }
@@ -180,13 +186,13 @@ class ComponentTagCompiler
                 =
                 (?<value>
                     (
-                        \"[^\"]+\"
-                        |
-                        \\\'[^\\\']+\\\'
-                        |
-                        \{[^\{]+\}
-                        |
-                        [^\s>]+
+                        \"[^\"]+\"       # Capture all that is between "..." but not `"`
+                        |                # or
+                        \\\'[^\\\']+\\\' # Capture all that is between \'...\' but not `\'`
+                        |                # or
+                        \{[^\{]+\}       # Capture all that is between {...} but not `{`
+                        |                # or
+                        [^>]+            # Capture any character but not `>`
                     )
                 )
             )?
