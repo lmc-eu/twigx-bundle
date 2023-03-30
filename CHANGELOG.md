@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+
+## 3.2.1 - 2023-03-30
 - Fix: Negative lookahead breaks parsing of element closing bracket
 - Fix: Allow space between double parenthesis refs #DS-657
 
