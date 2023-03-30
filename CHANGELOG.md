@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- Fix: Negative lookahead breaks parsing of element closing bracket
+- Fix: Allow space between double parenthesis refs #DS-657
 
 ## 3.2.0 - 2023-01-26
 - Docs: Add badge with code coverage status
