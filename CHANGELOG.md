@@ -2,6 +2,7 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- Fix: Double parenthesis with space around do not compile on Jobs.cz
 
 ## 3.2.1 - 2023-03-30
 - Fix: Negative lookahead breaks parsing of element closing bracket
