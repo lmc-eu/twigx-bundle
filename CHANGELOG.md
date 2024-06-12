@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+
+## 3.3.0 - 2024-06-12
 - Feat: Normalize template name using regex to allow capitalized prefixes
 
 ## 3.2.1 - 2023-03-30
