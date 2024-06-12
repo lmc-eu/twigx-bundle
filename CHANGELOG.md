@@ -2,6 +2,7 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- Feat: Normalize template name using regex to allow capitalized prefixes
 
 ## 3.2.1 - 2023-03-30
 - Fix: Negative lookahead breaks parsing of element closing bracket

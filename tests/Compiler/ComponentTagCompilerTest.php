@@ -15,6 +15,13 @@ class ComponentTagCompilerTest extends TestCase
         $this->assertSame('{% embed "@alias/alert.twig" with { props: {\'color\': "primary"} } %}{% endembed %}', $compiler->compile());
     }
 
+    public function testShouldCompileUnstable(): void
+    {
+        $compiler = new ComponentTagCompiler('<UNSTABLE_Alert color="primary" />', 'alias');
+
+        $this->assertSame('{% embed "@alias/unstable_Alert.twig" with { props: {\'color\': "primary"} } %}{% endembed %}', $compiler->compile());
+    }
+
     public function testShouldCompileClosingTag(): void
     {
         $compiler = new ComponentTagCompiler('<Alert color="primary">test</Alert>', 'alias');

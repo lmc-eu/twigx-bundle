@@ -83,7 +83,13 @@ class ComponentTagCompiler
 
     protected function componentStartString(string $component, string $attributes): string
     {
-        return "{% embed \"@" . $this->twigPathAlias . "/" . lcfirst($component) . ".twig\" with { props: $attributes } %}";
+        return sprintf(
+            // another `%` is used for escaping the `%`, e. g. `%%` -> `%`
+            "{%% embed \"@%s/%s.twig\" with { props: %s } %%}",
+            $this->twigPathAlias,
+            $this->normalizeComponentPathName($component),
+            $attributes
+        );
     }
 
     /**
@@ -144,6 +150,13 @@ class ComponentTagCompiler
             },
             $value
         );
+    }
+
+    private function normalizeComponentPathName(string $name): string
+    {
+        return preg_replace_callback('/^[A-Z]+_?/', function ($matches) {
+            return strtolower($matches[0]);
+        }, $name) ?: $name;
     }
 
     private function valueParser(?string $value, string $attribute): string
