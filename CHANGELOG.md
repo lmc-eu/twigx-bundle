@@ -2,6 +2,7 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- Fix: Double parenthesis with space around do not compile on Jobs.cz
 
 ## 3.3.0 - 2024-06-12
 - Feat: Normalize template name using regex to allow capitalized prefixes
