@@ -2,6 +2,13 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+- [BC]: Drop support Symfony `4.4` and not LTS versions `6.x`
+- [BC]: Drop support PHP `^7.4`
+- Feat: Add support for Symfony `^7.2`
+- Feat: Introduce support PHP `^8.4`
+- Deps: Drop old PHP polyfill packages
+- Deps: Update dev dependencies
+- Chore: Update docker container php version to `8.4`
 
 ## 3.3.0 - 2024-06-12
 - Feat: Normalize template name using regex to allow capitalized prefixes

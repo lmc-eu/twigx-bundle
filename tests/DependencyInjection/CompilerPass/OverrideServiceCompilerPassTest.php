@@ -6,8 +6,8 @@ namespace Lmc\TwigXBundle\DependencyInjection\CompilerPass;
 
 use Lmc\TwigXBundle\DependencyInjection\TwigXExtension;
 use Lmc\TwigXBundle\Helper\DefinitionHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Config\Definition\Dumper\YamlReferenceDumper;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Twig\Environment;
@@ -34,9 +34,9 @@ class OverrideServiceCompilerPassTest extends TestCase
     }
 
     /**
-     * @dataProvider registerTwigPathsDataProvider
      * @param array<string> $paths
      */
+    #[DataProvider('registerTwigPathsDataProvider')]
     public function testShouldRegisterTwigPaths(array $paths, int $expectedCalls): void
     {
         $this->builder->setParameter('twigx.paths', $paths);
@@ -55,7 +55,7 @@ class OverrideServiceCompilerPassTest extends TestCase
     /**
      * @return array<string, mixed>
      */
-    public function registerTwigPathsDataProvider(): array
+    public static function registerTwigPathsDataProvider(): array
     {
         $defaultPath = realpath(__DIR__ . '/../../../src/DependencyInjection') . '/../Resources/components';
 

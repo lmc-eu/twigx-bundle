@@ -12,7 +12,7 @@ then
 fi
 
 # fix composer version https://github.com/composer/composer/issues/10671
-php composer-setup.php --version=2.2.9 --quiet;
+php composer-setup.php --version=2.8.4 --quiet;
 RESULT=$?
 rm composer-setup.php;
 

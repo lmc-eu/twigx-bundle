@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lmc\TwigXBundle\Compiler;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ComponentTagCompilerTest extends TestCase
@@ -57,9 +58,7 @@ class ComponentTagCompilerTest extends TestCase
         $this->assertSame('{% embed "@alias/alert.twig" with { props: {\'number\': true ? 12 : 10} } %}{% endembed %}', $compiler->compile());
     }
 
-    /**
-     * @dataProvider twigParenthesesDataProvider
-     */
+    #[DataProvider('twigParenthesesDataProvider')]
     public function testShouldCompileTwigVariablesParentheses(string $component, string $expected): void
     {
         $compiler = new ComponentTagCompiler($component, 'alias');
@@ -70,7 +69,7 @@ class ComponentTagCompilerTest extends TestCase
     /**
      * @return array<string, string[]>
      */
-    public function twigParenthesesDataProvider(): array
+    public static function twigParenthesesDataProvider(): array
     {
         return [
             // component, expected
@@ -93,9 +92,7 @@ class ComponentTagCompilerTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider twigCommentsDataProvider
-     */
+    #[DataProvider('twigCommentsDataProvider')]
     public function testShouldCompileTwigVariablesWithTwigComment(string $component, string $expected): void
     {
         $compiler = new ComponentTagCompiler($component, 'alias');
@@ -106,7 +103,7 @@ class ComponentTagCompilerTest extends TestCase
     /**
      * @return array<string, string[]>
      */
-    public function twigCommentsDataProvider(): array
+    public static function twigCommentsDataProvider(): array
     {
         return [
             // component, expected

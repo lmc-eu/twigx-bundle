@@ -1,4 +1,4 @@
-FROM php:8.1
+FROM php:8.4
 
 # Install unzip utility and libs needed by zip PHP extension
 RUN apt-get update && apt-get install -y \
