@@ -10,15 +10,10 @@ namespace Lmc\TwigXBundle\Compiler;
  */
 class ComponentTagCompiler
 {
-    protected string $source;
-
-    private string $twigPathAlias;
-
-    public function __construct(string $source, string $twigPathAlias)
-    {
-        $this->source = $source;
-        $this->twigPathAlias = $twigPathAlias;
-    }
+    public function __construct(
+        protected string $source,
+        private string $twigPathAlias
+    ) {}
 
     public function compile(): string
     {
@@ -85,7 +80,7 @@ class ComponentTagCompiler
     {
         return sprintf(
             // another `%` is used for escaping the `%`, e. g. `%%` -> `%`
-            "{%% embed \"@%s/%s.twig\" with { props: %s } %%}",
+            '{%% embed "@%s/%s.twig" with { props: %s } %%}',
             $this->twigPathAlias,
             $this->normalizeComponentPathName($component),
             $attributes
@@ -155,7 +150,7 @@ class ComponentTagCompiler
     private function normalizeComponentPathName(string $name): string
     {
         return preg_replace_callback('/^[A-Z]+_?/', function ($matches) {
-            return strtolower($matches[0]);
+            return mb_strtolower($matches[0]);
         }, $name) ?: $name;
     }
 
@@ -174,16 +169,16 @@ class ComponentTagCompiler
         // `"{ value } "` -> `{ value }`
         // `"{{value}} "` -> `{{value}}`
         // `"{value} "` -> `{value}`
-        $valueWithoutQuotes = trim($this->stripQuotes($value));
+        $valueWithoutQuotes = mb_trim($this->stripQuotes($value));
 
         // `{{ value }}` or `{{value}}`
         if (\str_starts_with($valueWithoutQuotes, '{{') && (mb_strpos($valueWithoutQuotes, '}}') === mb_strlen($valueWithoutQuotes) - 2)) {
-            return trim(mb_substr($valueWithoutQuotes, 2, -2));
+            return mb_trim(mb_substr($valueWithoutQuotes, 2, -2));
         }
 
         // `{ value }` or `{value}`
         if (\str_starts_with($valueWithoutQuotes, '{') && (mb_strpos($valueWithoutQuotes, '}') === mb_strlen($valueWithoutQuotes) - 1)) {
-            return trim(mb_substr($valueWithoutQuotes, 1, -1));
+            return mb_trim(mb_substr($valueWithoutQuotes, 1, -1));
         }
 
         return $value;
@@ -236,7 +231,7 @@ class ComponentTagCompiler
             $out .= "$key: $value,";
         }
 
-        return rtrim($out, ',') . '}';
+        return mb_rtrim($out, ',') . '}';
     }
 
     /**

@@ -13,11 +13,11 @@ class ConfigurationTest extends TestCase
     {
         $dumper = new YamlReferenceDumper();
         $reference = <<<CONFIG
-twigx:
-    paths:                []
-    paths_alias:          spirit
+            twigx:
+                paths:                []
+                paths_alias:          spirit
 
-CONFIG;
+            CONFIG;
 
         $this->assertEquals($reference, $dumper->dump(new Configuration()));
     }
