@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use PhpCsFixer\Fixer\Alias\MbStrFunctionsFixer;
 use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
@@ -18,6 +19,9 @@ return ECSConfig::configure()
         directory: sys_get_temp_dir() . '/ecs_cached_files',
         namespace: getcwd(),
     )
+    ->withSkip([
+        MbStrFunctionsFixer::class,
+    ])
     ->withPaths([
         __DIR__ . '/src',
         __DIR__ . '/tests',

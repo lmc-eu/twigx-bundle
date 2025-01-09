@@ -6,9 +6,9 @@ TwigX Bundle
 Symfony bundle extending Twig template engine with [JSX]-like markup.
 
 ## Requirements
-- PHP 7.4 || 8.1
-- Symfony 4.4+ || 5.4+ || ^6.1
-- Twig >=1.44.6 || >=2.12.5 || 3+
+- PHP ^8.1
+- Symfony ^5.4 || ^6.4 || ^7.2
+- Twig ^3
 
 ## Changelog
 See [CHANGELOG](./CHANGELOG.md)

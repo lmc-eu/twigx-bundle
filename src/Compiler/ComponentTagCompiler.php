@@ -24,6 +24,28 @@ class ComponentTagCompiler
         return $this->compileClosingTags($value);
     }
 
+    private function trim(string $value, ?string $characters = null, ?string $encoding = null): string
+    {
+        if (PHP_VERSION_ID >= 80400 && function_exists('mb_trim')) {
+            return mb_trim($value, $characters, $encoding);
+        }
+
+        $characters = $characters ?: "\n\r\t\v\0\x0B\x0C ";
+
+        return trim($value, $characters);
+    }
+
+    private function rtrim(string $value, ?string $characters = null, ?string $encoding = null): string
+    {
+        if (PHP_VERSION_ID >= 80400 && function_exists('mb_rtrim')) {
+            return mb_rtrim($value, $characters, $encoding);
+        }
+
+        $characters = $characters ?: "\n\r\t\v\0\x0B\x0C ";
+
+        return rtrim($value, $characters);
+    }
+
     /**
      * Compile the opening tags within the given string.
      */
@@ -169,16 +191,16 @@ class ComponentTagCompiler
         // `"{ value } "` -> `{ value }`
         // `"{{value}} "` -> `{{value}}`
         // `"{value} "` -> `{value}`
-        $valueWithoutQuotes = mb_trim($this->stripQuotes($value));
+        $valueWithoutQuotes = $this->trim($this->stripQuotes($value));
 
         // `{{ value }}` or `{{value}}`
         if (\str_starts_with($valueWithoutQuotes, '{{') && (mb_strpos($valueWithoutQuotes, '}}') === mb_strlen($valueWithoutQuotes) - 2)) {
-            return mb_trim(mb_substr($valueWithoutQuotes, 2, -2));
+            return $this->trim(mb_substr($valueWithoutQuotes, 2, -2));
         }
 
         // `{ value }` or `{value}`
         if (\str_starts_with($valueWithoutQuotes, '{') && (mb_strpos($valueWithoutQuotes, '}') === mb_strlen($valueWithoutQuotes) - 1)) {
-            return mb_trim(mb_substr($valueWithoutQuotes, 1, -1));
+            return $this->trim(mb_substr($valueWithoutQuotes, 1, -1));
         }
 
         return $value;
@@ -231,7 +253,7 @@ class ComponentTagCompiler
             $out .= "$key: $value,";
         }
 
-        return mb_rtrim($out, ',') . '}';
+        return $this->rtrim($out, ',') . '}';
     }
 
     /**
