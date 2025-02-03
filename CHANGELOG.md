@@ -2,6 +2,8 @@
 
 <!-- There should always be "Unreleased" section at the beginning. -->
 ## Unreleased
+
+## 4.0.0 - 2025-01-09
 - [BC]: Drop support Symfony `4.4` and not LTS versions `6.x`
 - [BC]: Drop support PHP `^7.4`
 - Feat: Add support for Symfony `^7.2`
